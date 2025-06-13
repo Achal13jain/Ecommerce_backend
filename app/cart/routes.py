@@ -3,13 +3,14 @@ from sqlalchemy.orm import Session
 from app.cart import models, schemas
 from app.products.models import Product
 from app.core.database import get_db
-from app.auth.dependencies import get_current_user
+# from app.auth.dependencies import get_current_user
 from app.auth.models import User
+from app.auth.dependencies import require_user
 
 router = APIRouter(prefix="/cart", tags=["Cart"])
 
 @router.post("/", response_model=schemas.CartOut)
-def add_to_cart(request: schemas.AddToCartRequest, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+def add_to_cart(request: schemas.AddToCartRequest, db: Session = Depends(get_db), current_user: User = Depends(require_user)):
     cart = db.query(models.Cart).filter(models.Cart.user_id == current_user.id).first()
     if not cart:
         cart = models.Cart(user_id=current_user.id)
@@ -40,15 +41,15 @@ def add_to_cart(request: schemas.AddToCartRequest, db: Session = Depends(get_db)
 
 
 @router.get("/", response_model=schemas.CartOut)
-def get_my_cart(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+def get_my_cart(db: Session = Depends(get_db), current_user: User = Depends(require_user)):
     cart = db.query(models.Cart).filter(models.Cart.user_id == current_user.id).first()
     if not cart:
         raise HTTPException(status_code=404, detail="Cart not found")
     return cart
 
 
-@router.patch("/item/{item_id}", response_model=schemas.CartOut)
-def update_cart_item(item_id: int, quantity: int, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+@router.patch("/{item_id}", response_model=schemas.CartOut)
+def update_cart_item(item_id: int, quantity: int, db: Session = Depends(get_db), current_user: User = Depends(require_user)):
     cart = db.query(models.Cart).filter(models.Cart.user_id == current_user.id).first()
     if not cart:
         raise HTTPException(status_code=404, detail="Cart not found")
@@ -67,8 +68,8 @@ def update_cart_item(item_id: int, quantity: int, db: Session = Depends(get_db),
     return cart
 
 
-@router.delete("/item/{item_id}", status_code=204)
-def delete_cart_item(item_id: int, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+@router.delete("/{item_id}", status_code=204)
+def delete_cart_item(item_id: int, db: Session = Depends(get_db), current_user: User = Depends(require_user)):
     cart = db.query(models.Cart).filter(models.Cart.user_id == current_user.id).first()
     if not cart:
         raise HTTPException(status_code=404, detail="Cart not found")

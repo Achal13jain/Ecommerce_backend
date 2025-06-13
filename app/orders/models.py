@@ -3,6 +3,13 @@ from sqlalchemy.orm import relationship
 from app.core.database import Base
 from datetime import datetime
 from sqlalchemy.sql import func
+from sqlalchemy import Enum
+import enum
+
+class OrderStatus(str, enum.Enum):
+    pending = "pending"
+    paid = "paid"
+    cancelled = "cancelled"
 
 class Order(Base):
     __tablename__ = "orders"
@@ -14,7 +21,7 @@ class Order(Base):
     
     user = relationship("User", back_populates="orders")
     items = relationship("OrderItem", back_populates="order", cascade="all, delete")
-
+    status = Column(Enum(OrderStatus), default=OrderStatus.pending)
 
 class OrderItem(Base):
     __tablename__ = "order_items"
@@ -23,7 +30,7 @@ class OrderItem(Base):
     order_id = Column(Integer, ForeignKey("orders.id"))
     product_id = Column(Integer, ForeignKey("products.id"))
     quantity = Column(Integer)
-    price = Column(Float)  # price at time of ordering
+    price_at_purchase = Column(Float)  # price at time of ordering
 
     order = relationship("Order", back_populates="items")
     product = relationship("Product")

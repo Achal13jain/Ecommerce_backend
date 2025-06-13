@@ -29,7 +29,8 @@ def signup(user: schemas.UserCreate, db: Session = Depends(get_db)):
         name=user.name,
         email=user.email,
         hashed_password=hashed_pw,
-        #role=user.role
+        role=user.role,
+        is_admin=True if user.role == "admin" else False  # ✅ Derive is_admin flag
     )
     db.add(new_user)
     db.commit()

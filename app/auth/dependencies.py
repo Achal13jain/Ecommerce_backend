@@ -48,3 +48,11 @@ def require_admin(user: User = Depends(get_current_user)):
             detail="Only admins are allowed"
         )
     return user
+
+def require_user(user: User = Depends(get_current_user)):
+    if user.role != "user":
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Only users are allowed to access this resource"
+        )
+    return user

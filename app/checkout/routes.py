@@ -1,7 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.core.database import get_db
-from app.auth.dependencies import get_current_user
+#from app.auth.dependencies import get_current_user
+from app.auth.dependencies import require_user
 from app.auth.models import User
 from app.cart.models import Cart, CartItem
 from app.orders.models import Order, OrderItem
@@ -9,7 +10,7 @@ from app.orders.models import Order, OrderItem
 router = APIRouter(prefix="/checkout", tags=["Checkout"])
 
 @router.post("/", summary="Checkout and create order")
-def checkout(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+def checkout(db: Session = Depends(get_db), current_user: User = Depends(require_user)):
     cart = db.query(Cart).filter(Cart.user_id == current_user.id).first()
 
     if not cart or not cart.items:
@@ -25,7 +26,7 @@ def checkout(db: Session = Depends(get_db), current_user: User = Depends(get_cur
             order_id=order.id,
             product_id=item.product_id,
             quantity=item.quantity,
-            price=item.price_at_addition
+            price_at_purchase=item.price_at_addition
         )
         total += item.quantity * item.price_at_addition
         db.add(order_item)

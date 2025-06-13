@@ -5,13 +5,13 @@ class UserCreate(BaseModel):
     name: str
     email: EmailStr
     password: str
-    #role: Literal["admin", "user"]  # Restrict role to allowed values
+    role: Literal["admin", "user"]  # Restrict role to allowed values
 
 class UserOut(BaseModel):
     id: int
     name: str
     email: EmailStr
-    #role: str
+    role: str
 
     class Config:
         orm_mode = True

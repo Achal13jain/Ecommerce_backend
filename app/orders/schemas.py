@@ -6,7 +6,7 @@ class OrderItemOut(BaseModel):
     id: int
     product_id: int
     quantity: int
-    price: float
+    price_at_purchase: float
 
     class Config:
         orm_mode = True

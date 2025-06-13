@@ -16,7 +16,7 @@ class User(Base):
     name = Column(String, nullable=False)
     email = Column(String, unique=True, index=True, nullable=False)
     hashed_password = Column(String, nullable=False)
-    role = Column(Enum(UserRole), default="user", nullable=False)  # You can remove this later if fully using `is_admin`
+    role = Column(Enum(UserRole), default="user", nullable=False)
     is_admin = Column(Boolean, default=False)
 
     cart = relationship("Cart", back_populates="user", uselist=False)
