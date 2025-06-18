@@ -1,0 +1,7 @@
+2025-06-17 21:51:25,263 | INFO     | 127.0.0.1 -> POST /auth/signin
+2025-06-17 21:51:26,064 | INFO     | User ishu@gmail.com logged in
+2025-06-17 21:51:52,493 | INFO     | 127.0.0.1 -> POST /auth/signin
+2025-06-17 21:51:52,964 | WARNING  | Login failure – bad password for ishu@gmail.com
+2025-06-17 21:52:42,747 | INFO     | 127.0.0.1 -> POST /auth/signin
+2025-06-17 21:52:43,175 | INFO     | User ishu@gmail.com logged in
+2025-06-17 22:33:04,125 | INFO     | 127.0.0.1 -> POST /auth/forgot-password

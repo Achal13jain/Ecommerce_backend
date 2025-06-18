@@ -4,8 +4,12 @@ from app.auth import models, schemas, utils
 from app.core.database import SessionLocal
 from app.auth.dependencies import get_current_user, require_admin
 from app.auth.models import User
+from app.utils.email_sender import send_reset_email
+from datetime import datetime, timedelta
+import os, uuid
+from app.core.logger import logger   
 router = APIRouter()
-
+DEBUG_EMAIL = os.getenv("DEBUG_EMAIL", "False").lower() == "true"
 # Dependency to get DB session
 def get_db():
     db = SessionLocal()
@@ -30,7 +34,7 @@ def signup(user: schemas.UserCreate, db: Session = Depends(get_db)):
         email=user.email,
         hashed_password=hashed_pw,
         role=user.role,
-        is_admin=True if user.role == "admin" else False  # ✅ Derive is_admin flag
+        is_admin=True if user.role == "admin" else False  
     )
     db.add(new_user)
     db.commit()
@@ -44,11 +48,14 @@ def signin(user: UserLogin, db: Session = Depends(get_db)):
     db_user = db.query(models.User).filter(models.User.email == user.email).first()
     
     if not db_user:
+        logger.warning(f"Login failure – unknown email: {user.email}")
         raise HTTPException(status_code=404, detail="User not found")
 
     if not utils.verify_password(user.password, db_user.hashed_password):
+        logger.warning(f"Login failure – bad password for {user.email}")
         raise HTTPException(status_code=401, detail="Invalid credentials")
-
+    
+    logger.info(f"User {db_user.email} logged in")  
     access_token = create_access_token(data={"user_id": db_user.id})
 
     refresh_token = create_refresh_token(data={"sub": db_user.email})
@@ -58,26 +65,23 @@ def signin(user: UserLogin, db: Session = Depends(get_db)):
         "refresh_token": refresh_token,
         "token_type": "bearer"
     }
-# 🛡️ Protected route — User
+#  Protected route — User
 @router.get("/me", summary="Get current user info")
 def get_profile(current_user: User = Depends(get_current_user)):
     return {
         "id": current_user.id,
         "name": current_user.name,
         "email": current_user.email,
-        #"role": current_user.role
         "is_admin": current_user.is_admin  
     }
 
-# 🛡️ Protected route — Admin only
+#  Protected route — Admin only
 @router.get("/admin/dashboard", summary="Admin only route")
 def admin_dashboard(admin_user: User = Depends(require_admin)):
     return {
         "message": f"Welcome admin {admin_user.name}!"
     }
 
-from datetime import datetime, timedelta
-import uuid
 from app.auth.models import PasswordResetToken
 from app.auth.schemas import ForgotPasswordRequest, ResetPasswordRequest
 
@@ -100,10 +104,16 @@ def forgot_password(payload: ForgotPasswordRequest, db: Session = Depends(get_db
     db.add(reset_token)
     db.commit()
 
-    # Simulate email sending
-    print(f"🔐 Password reset token for {user.email}: {token}")
-
-    return {"message": "Password reset link sent to your email "}
+    #  email sending
+    if not send_reset_email(user.email, token):
+    # delete token row if mail failed
+        db.delete(reset_token)
+        db.commit()
+        raise HTTPException(status_code=500, detail="Failed to send reset e-mail")
+    response = {"message": "Password-reset link sent to your e-mail"}
+    if DEBUG_EMAIL:
+        response["reset_token"] = token
+    return response
 
 
 @router.post("/reset-password", summary="Reset password using token")

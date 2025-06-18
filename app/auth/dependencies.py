@@ -2,14 +2,14 @@ from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
 from app.core.config import settings
-from app.auth.models import User
+from app.auth.models import User                    #SQLAlchemy model
 from app.core.database import SessionLocal
 from sqlalchemy.orm import Session
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/signin")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/signin")#Defines how clients obtain the token
 
 # DB Session dependency
-def get_db():
+def get_db():   #Open a new DB session
     db = SessionLocal()
     try:
         yield db
@@ -24,7 +24,7 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
     )
 
     try:
-        payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
+        payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])#Verify signature & decode
         print("Decoded token:", payload)  
         user_id: int = payload.get("user_id")
         if user_id is None:

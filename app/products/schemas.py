@@ -1,11 +1,11 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import Optional
 
 class ProductCreate(BaseModel):
     name: str
     description: str
-    price: float
-    stock: int
+    price: float= Field(..., gt=0, description="Price must be greater than 0")
+    stock: int= Field(..., ge=0, description="Stock must be zero or more")
     category: str
     image_url: Optional[str]
 

@@ -46,15 +46,15 @@ def create_order(db: Session = Depends(get_db), current_user: User = Depends(req
 def list_my_orders(db: Session = Depends(get_db), current_user: User = Depends(require_user)):
     return db.query(models.Order).filter(models.Order.user_id == current_user.id).all()
 
-@router.get("/admin", response_model=list[schemas.OrderOut], status_code=status.HTTP_200_OK)
-def list_all_orders_admin(
-    db: Session = Depends(get_db),
-    current_user: User = Depends(get_current_user)
-):
-    if not current_user.is_admin:
-        raise HTTPException(status_code=403, detail="Not authorized to view all orders")
+# @router.get("/admin", response_model=list[schemas.OrderOut], status_code=status.HTTP_200_OK)
+# def list_all_orders_admin(
+#     db: Session = Depends(get_db),
+#     current_user: User = Depends(get_current_user)
+# ):
+#     if not current_user.is_admin:
+#         raise HTTPException(status_code=403, detail="Not authorized to view all orders")
 
-    return db.query(models.Order).all()
+#     return db.query(models.Order).all()
 
 @router.get("/{order_id}", response_model=schemas.OrderOut)
 def get_order_detail(order_id: int, db: Session = Depends(get_db), current_user: User = Depends(require_user)):

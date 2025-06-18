@@ -1,0 +1,872 @@
+2025-06-18 14:29:04,340 | INFO     | 127.0.0.1 -> GET /
+2025-06-18 14:45:53,727 | INFO     | 127.0.0.1 -> GET /
+2025-06-18 14:45:57,869 | INFO     | 127.0.0.1 -> GET /
+2025-06-18 15:28:41,192 | INFO     | 127.0.0.1 -> POST /auth/signup
+2025-06-18 15:29:30,618 | INFO     | 127.0.0.1 -> POST /auth/signin
+2025-06-18 15:29:31,831 | INFO     | User ishuachal@gmail.com logged in
+2025-06-18 15:30:17,085 | INFO     | 127.0.0.1 -> GET /auth/me
+2025-06-18 15:31:04,676 | INFO     | 127.0.0.1 -> POST /auth/forgot-password
+2025-06-18 15:31:25,794 | INFO     | 127.0.0.1 -> POST /auth/forgot-password
+2025-06-18 15:32:28,645 | INFO     | 127.0.0.1 -> POST /auth/forgot-password
+2025-06-18 15:35:21,228 | INFO     | 127.0.0.1 -> GET /auth/admin/dashboard
+2025-06-18 15:36:08,730 | INFO     | 127.0.0.1 -> GET /products
+2025-06-18 15:36:08,744 | INFO     | 127.0.0.1 -> GET /products/
+2025-06-18 15:40:11,575 | INFO     | 127.0.0.1 -> POST /auth/signup
+2025-06-18 15:40:28,355 | INFO     | 127.0.0.1 -> POST /auth/signin
+2025-06-18 15:40:29,607 | INFO     | User admin1@gmail.com logged in
+2025-06-18 15:41:59,013 | INFO     | 127.0.0.1 -> POST /admin/products
+2025-06-18 15:41:59,027 | INFO     | 127.0.0.1 -> POST /admin/products/
+2025-06-18 15:42:21,749 | INFO     | 127.0.0.1 -> POST /auth/signup
+2025-06-18 15:42:30,793 | INFO     | 127.0.0.1 -> POST /auth/signin
+2025-06-18 15:42:31,810 | INFO     | User ishuachal@gmail.com logged in
+2025-06-18 15:43:30,726 | INFO     | 127.0.0.1 -> POST /cart
+2025-06-18 15:43:30,735 | INFO     | 127.0.0.1 -> POST /cart/
+2025-06-18 15:43:49,847 | INFO     | 127.0.0.1 -> GET /cart
+2025-06-18 15:43:49,872 | INFO     | 127.0.0.1 -> GET /cart/
+2025-06-18 15:44:08,854 | INFO     | 127.0.0.1 -> GET /cart
+2025-06-18 15:44:08,863 | INFO     | 127.0.0.1 -> GET /cart/
+2025-06-18 16:02:33,650 | INFO     | 127.0.0.1 -> POST /auth/signin
+2025-06-18 16:02:40,085 | INFO     | 127.0.0.1 -> POST /auth/signin
+2025-06-18 16:02:41,099 | INFO     | User admin1@gmail.com logged in
+2025-06-18 16:03:27,629 | INFO     | 127.0.0.1 -> DELETE /admin/products/8
+2025-06-18 16:03:27,805 | ERROR    | Unhandled exception
+Traceback (most recent call last):
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.ForeignKeyViolation: update or delete on table "products" violates foreign key constraint "cart_items_product_id_fkey" on table "cart_items"
+DETAIL:  Key (id)=(8) is still referenced from table "cart_items".
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\app\main.py", line 27, in access_log_middleware
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    raise app_exc
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\app\products\routes.py", line 48, in delete_product
+    db.commit()
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 2032, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 1313, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 1288, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 4345, in flush
+    self._flush(objects)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 4480, in _flush
+    with util.safe_reraise():
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 4441, in _flush
+    flush_context.execute()
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 679, in execute
+    util.preloaded.orm_persistence.delete_obj(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\persistence.py", line 193, in delete_obj
+    _emit_delete_statements(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1465, in _emit_delete_statements
+    c = connection.execute(
+        ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+           ^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.ForeignKeyViolation) update or delete on table "products" violates foreign key constraint "cart_items_product_id_fkey" on table "cart_items"
+DETAIL:  Key (id)=(8) is still referenced from table "cart_items".
+
+[SQL: DELETE FROM products WHERE products.id = %(id)s]
+[parameters: {'id': 8}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-06-18 16:04:21,269 | INFO     | 127.0.0.1 -> DELETE /admin/products/4
+2025-06-18 16:04:47,539 | INFO     | 127.0.0.1 -> DELETE /admin/products/8
+2025-06-18 16:04:47,588 | ERROR    | Unhandled exception
+Traceback (most recent call last):
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.ForeignKeyViolation: update or delete on table "products" violates foreign key constraint "cart_items_product_id_fkey" on table "cart_items"
+DETAIL:  Key (id)=(8) is still referenced from table "cart_items".
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\app\main.py", line 27, in access_log_middleware
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    raise app_exc
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\app\products\routes.py", line 48, in delete_product
+    db.commit()
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 2032, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 1313, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 1288, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 4345, in flush
+    self._flush(objects)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 4480, in _flush
+    with util.safe_reraise():
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 4441, in _flush
+    flush_context.execute()
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 679, in execute
+    util.preloaded.orm_persistence.delete_obj(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\persistence.py", line 193, in delete_obj
+    _emit_delete_statements(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1465, in _emit_delete_statements
+    c = connection.execute(
+        ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+           ^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.ForeignKeyViolation) update or delete on table "products" violates foreign key constraint "cart_items_product_id_fkey" on table "cart_items"
+DETAIL:  Key (id)=(8) is still referenced from table "cart_items".
+
+[SQL: DELETE FROM products WHERE products.id = %(id)s]
+[parameters: {'id': 8}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-06-18 16:05:07,871 | INFO     | 127.0.0.1 -> GET /products
+2025-06-18 16:05:07,883 | INFO     | 127.0.0.1 -> GET /products/
+2025-06-18 16:06:16,521 | INFO     | 127.0.0.1 -> GET /admin/products
+2025-06-18 16:06:16,539 | INFO     | 127.0.0.1 -> GET /admin/products/
+2025-06-18 16:06:38,467 | INFO     | 127.0.0.1 -> DELETE /admin/products/2
+2025-06-18 16:06:38,510 | ERROR    | Unhandled exception
+Traceback (most recent call last):
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.ForeignKeyViolation: update or delete on table "products" violates foreign key constraint "cart_items_product_id_fkey" on table "cart_items"
+DETAIL:  Key (id)=(2) is still referenced from table "cart_items".
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\app\main.py", line 27, in access_log_middleware
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    raise app_exc
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\app\products\routes.py", line 48, in delete_product
+    db.commit()
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 2032, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 1313, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 1288, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 4345, in flush
+    self._flush(objects)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 4480, in _flush
+    with util.safe_reraise():
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 4441, in _flush
+    flush_context.execute()
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 679, in execute
+    util.preloaded.orm_persistence.delete_obj(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\persistence.py", line 193, in delete_obj
+    _emit_delete_statements(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1465, in _emit_delete_statements
+    c = connection.execute(
+        ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+           ^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.ForeignKeyViolation) update or delete on table "products" violates foreign key constraint "cart_items_product_id_fkey" on table "cart_items"
+DETAIL:  Key (id)=(2) is still referenced from table "cart_items".
+
+[SQL: DELETE FROM products WHERE products.id = %(id)s]
+[parameters: {'id': 2}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-06-18 16:07:04,306 | INFO     | 127.0.0.1 -> GET /admin/products
+2025-06-18 16:07:04,316 | INFO     | 127.0.0.1 -> GET /admin/products/
+2025-06-18 16:07:20,879 | INFO     | 127.0.0.1 -> DELETE /admin/products/8
+2025-06-18 16:07:20,917 | ERROR    | Unhandled exception
+Traceback (most recent call last):
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.ForeignKeyViolation: update or delete on table "products" violates foreign key constraint "cart_items_product_id_fkey" on table "cart_items"
+DETAIL:  Key (id)=(8) is still referenced from table "cart_items".
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\app\main.py", line 27, in access_log_middleware
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    raise app_exc
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\app\products\routes.py", line 48, in delete_product
+    db.commit()
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 2032, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 1313, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 1288, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 4345, in flush
+    self._flush(objects)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 4480, in _flush
+    with util.safe_reraise():
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 4441, in _flush
+    flush_context.execute()
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 679, in execute
+    util.preloaded.orm_persistence.delete_obj(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\persistence.py", line 193, in delete_obj
+    _emit_delete_statements(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1465, in _emit_delete_statements
+    c = connection.execute(
+        ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+           ^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.ForeignKeyViolation) update or delete on table "products" violates foreign key constraint "cart_items_product_id_fkey" on table "cart_items"
+DETAIL:  Key (id)=(8) is still referenced from table "cart_items".
+
+[SQL: DELETE FROM products WHERE products.id = %(id)s]
+[parameters: {'id': 8}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-06-18 16:07:45,414 | INFO     | 127.0.0.1 -> GET /docs
+2025-06-18 16:07:46,348 | INFO     | 127.0.0.1 -> GET /openapi.json
+2025-06-18 16:09:00,101 | INFO     | 127.0.0.1 -> DELETE /admin/products/8
+2025-06-18 16:09:00,202 | ERROR    | Unhandled exception
+Traceback (most recent call last):
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.ForeignKeyViolation: update or delete on table "products" violates foreign key constraint "cart_items_product_id_fkey" on table "cart_items"
+DETAIL:  Key (id)=(8) is still referenced from table "cart_items".
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\app\main.py", line 27, in access_log_middleware
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    raise app_exc
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\app\products\routes.py", line 48, in delete_product
+    db.commit()
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 2032, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 1313, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 1288, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 4345, in flush
+    self._flush(objects)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 4480, in _flush
+    with util.safe_reraise():
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 4441, in _flush
+    flush_context.execute()
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 679, in execute
+    util.preloaded.orm_persistence.delete_obj(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\persistence.py", line 193, in delete_obj
+    _emit_delete_statements(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1465, in _emit_delete_statements
+    c = connection.execute(
+        ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+           ^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.ForeignKeyViolation) update or delete on table "products" violates foreign key constraint "cart_items_product_id_fkey" on table "cart_items"
+DETAIL:  Key (id)=(8) is still referenced from table "cart_items".
+
+[SQL: DELETE FROM products WHERE products.id = %(id)s]
+[parameters: {'id': 8}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-06-18 16:09:37,413 | INFO     | 127.0.0.1 -> DELETE /admin/products/8
+2025-06-18 16:09:37,461 | ERROR    | Unhandled exception
+Traceback (most recent call last):
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.ForeignKeyViolation: update or delete on table "products" violates foreign key constraint "cart_items_product_id_fkey" on table "cart_items"
+DETAIL:  Key (id)=(8) is still referenced from table "cart_items".
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\app\main.py", line 27, in access_log_middleware
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    raise app_exc
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\app\products\routes.py", line 48, in delete_product
+    db.commit()
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 2032, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 1313, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 1288, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 4345, in flush
+    self._flush(objects)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 4480, in _flush
+    with util.safe_reraise():
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 4441, in _flush
+    flush_context.execute()
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 679, in execute
+    util.preloaded.orm_persistence.delete_obj(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\persistence.py", line 193, in delete_obj
+    _emit_delete_statements(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1465, in _emit_delete_statements
+    c = connection.execute(
+        ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+           ^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.ForeignKeyViolation) update or delete on table "products" violates foreign key constraint "cart_items_product_id_fkey" on table "cart_items"
+DETAIL:  Key (id)=(8) is still referenced from table "cart_items".
+
+[SQL: DELETE FROM products WHERE products.id = %(id)s]
+[parameters: {'id': 8}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-06-18 16:09:48,479 | INFO     | 127.0.0.1 -> DELETE /admin/products/5
+2025-06-18 16:09:48,503 | ERROR    | Unhandled exception
+Traceback (most recent call last):
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+psycopg2.errors.ForeignKeyViolation: update or delete on table "products" violates foreign key constraint "order_items_product_id_fkey" on table "order_items"
+DETAIL:  Key (id)=(5) is still referenced from table "order_items".
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\app\main.py", line 27, in access_log_middleware
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\middleware\base.py", line 156, in call_next
+    raise app_exc
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\middleware\base.py", line 141, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\app\products\routes.py", line 48, in delete_product
+    db.commit()
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 2032, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 1313, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 1288, in _prepare_impl
+    self.session.flush()
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 4345, in flush
+    self._flush(objects)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 4480, in _flush
+    with util.safe_reraise():
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 224, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\session.py", line 4441, in _flush
+    flush_context.execute()
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 679, in execute
+    util.preloaded.orm_persistence.delete_obj(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\persistence.py", line 193, in delete_obj
+    _emit_delete_statements(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1465, in _emit_delete_statements
+    c = connection.execute(
+        ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1415, in execute
+    return meth(
+           ^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\sql\elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "C:\Users\HI\Desktop\ecommerce_fastapi\env\Lib\site-packages\sqlalchemy\engine\default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.IntegrityError: (psycopg2.errors.ForeignKeyViolation) update or delete on table "products" violates foreign key constraint "order_items_product_id_fkey" on table "order_items"
+DETAIL:  Key (id)=(5) is still referenced from table "order_items".
+
+[SQL: DELETE FROM products WHERE products.id = %(id)s]
+[parameters: {'id': 5}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)

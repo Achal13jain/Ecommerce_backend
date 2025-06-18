@@ -19,8 +19,8 @@ class User(Base):
     role = Column(Enum(UserRole), default="user", nullable=False)
     is_admin = Column(Boolean, default=False)
 
-    cart = relationship("Cart", back_populates="user", uselist=False)
-    orders = relationship("Order", back_populates="user")
+    cart = relationship("Cart", back_populates="user", uselist=False)#One-to-one cart
+    orders = relationship("Order", back_populates="user")#One-to-many orders
     reset_tokens = relationship("PasswordResetToken", back_populates="user", cascade="all, delete-orphan")
 
 

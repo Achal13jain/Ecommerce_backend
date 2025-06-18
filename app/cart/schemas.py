@@ -1,9 +1,10 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import Optional, List
 
 class CartItemCreate(BaseModel):
     product_id: int
-    quantity: int
+    quantity: int= Field(..., gt=0, description="Quantity must be greater than zero")
+    
 class AddToCartRequest(BaseModel):
     items: List[CartItemCreate]
 

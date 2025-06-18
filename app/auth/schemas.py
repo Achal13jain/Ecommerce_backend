@@ -1,10 +1,10 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, Field
 from typing import Literal
 
 class UserCreate(BaseModel):
-    name: str
+    name: str= Field(..., min_length=3,max_length=30)
     email: EmailStr
-    password: str
+    password: str= Field(..., min_length=6)
     role: Literal["admin", "user"]  # Restrict role to allowed values
 
 class UserOut(BaseModel):
@@ -26,4 +26,4 @@ class ForgotPasswordRequest(BaseModel):
 
 class ResetPasswordRequest(BaseModel):
     token: str
-    new_password: str
+    new_password: str= Field(..., min_length=6)
