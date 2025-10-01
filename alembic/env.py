@@ -26,8 +26,8 @@ if config.config_file_name is not None:
 target_metadata = Base.metadata
 
 # -- Optional: Set config dynamically from .env if needed (advanced)
-# from app.core.config import settings
-# config.set_main_option('sqlalchemy.url', settings.DATABASE_URL)
+from app.core.config import settings
+config.set_main_option('sqlalchemy.url', settings.DATABASE_URL)
 
 def run_migrations_offline() -> None:
     """Run migrations in 'offline' mode."""
