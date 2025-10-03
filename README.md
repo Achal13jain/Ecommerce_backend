@@ -7,7 +7,7 @@
 ![Python](https://img.shields.io/badge/python-3.9+-blue.svg)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688.svg)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15+-316192.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
+
 
 [Features](#-features) • [Tech Stack](#-tech-stack) • [Getting Started](#-getting-started) • [API Documentation](#-api-documentation) • [Project Structure](#-project-structure)
 
@@ -240,12 +240,6 @@ Contributions are welcome! Please follow these steps:
 5. Open a Pull Request
 
 Please ensure your code follows the existing style and includes appropriate tests.
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
